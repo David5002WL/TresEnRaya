@@ -17,14 +17,14 @@ public class TresEnRaya {
             Scanner in =new Scanner(System.in);
             ch=in.nextLine();
             System.out.println("ch valor es  "+ch);
-        }while (ch.equals("no"));
+        }while (ch.equals("si")); //Debe finalizar cuando diga "no".
         
         
     }
     public  void newBoard()
     {
-        
-        char posndef[] = {'0','1', '3', '2', '4', '5', '7', '6','8', '9'}; 
+        //Los valores no estaban en orden
+        char posndef[] = {'0','1', '2', '3', '4', '5', '6', '7','8', '9'}; 
         int i;
         contador = 0;
         player = 'X';
@@ -34,16 +34,16 @@ public class TresEnRaya {
         
     }
     public  String tablero()
-    {
+    { //Las posiciones estaban mal
         System.out.println( "\n\n" );
         System.out.println(  "\n\n" );
-        System.out.println(  "\n\n\t\t" + posn [2] + "   | " +posn [3]+ "  | " +posn [3]);
+        System.out.println(  "\n\n\t\t" + posn [1] + "   | " +posn [2]+ "  | " +posn [3]);
         System.out.println(  " \t\t    |    |   " );
         System.out.println(  " \t\t ___|____|___ " );
-        System.out.println(  "\n\n\t\t" +posn [4]+ "   | " +posn [5]+ "  | " +posn [7]);
+        System.out.println(  "\n\n\t\t" +posn [4]+ "   | " +posn [5]+ "  | " +posn [6]);
         System.out.println(  " \t\t    |    |   " );
         System.out.println(  " \t\t ___|____|___ " );
-        System.out.println(  "\n\n\t\t" +posn [1]+ "   | " +posn [8]+ "  | " +posn [9]);
+        System.out.println(  "\n\n\t\t" +posn [7]+ "   | " +posn [8]+ "  | " +posn [9]);
         System.out.println(  " \t\t    |    |   " );
         System.out.println(  " \t\t    |    |   " );
         System.out.println(  "\n\n" );
@@ -62,7 +62,7 @@ public class TresEnRaya {
             
             System.out.println(  "\n\n Jugador " + getPlayer() +" elije la posicion." );
             
-            boolean posTaken = false;
+            boolean posTaken = true; //Necesita un true para que funcione no un false
             while (posTaken) {
                 Scanner in =new Scanner (System.in);
                 spot=in.nextInt();
@@ -84,15 +84,15 @@ public class TresEnRaya {
     {
         char Winner = ' ';
         
-        // Comprobacion sobre X
-        if (posn[1] == 'X' && posn[4] == 'X' && posn[3] == 'X') Winner = 'X';
-        if (posn[4] == 'X' && posn[1] == 'X' && posn[6] == 'X') Winner = 'X';
-        if (posn[7] == 'X' && posn[5] == 'X' && posn[9] == 'X') Winner = 'X';
-        if (posn[1] == 'X' && posn[3] == 'X' && posn[7] == 'X') Winner = 'X';
-        if (posn[2] == 'X' && posn[6] == 'X' && posn[8] == 'X') Winner = 'X';
-        if (posn[3] == 'X' && posn[5] == 'X' && posn[9] == 'X') Winner = 'X';
-        if (posn[1] == 'X' && posn[3] == 'X' && posn[9] == 'X') Winner = 'X';
-        if (posn[3] == 'X' && posn[2] == 'X' && posn[7] == 'X') Winner = 'X';
+        // Comprobacion sobre X //Los numeros estaban mal
+        if (posn[1] == 'X' && posn[2] == 'X' && posn[3] == 'X') Winner = 'X';
+        if (posn[4] == 'X' && posn[5] == 'X' && posn[6] == 'X') Winner = 'X';
+        if (posn[7] == 'X' && posn[8] == 'X' && posn[9] == 'X') Winner = 'X';
+        if (posn[1] == 'X' && posn[4] == 'X' && posn[7] == 'X') Winner = 'X';
+        if (posn[2] == 'X' && posn[5] == 'X' && posn[8] == 'X') Winner = 'X';
+        if (posn[3] == 'X' && posn[6] == 'X' && posn[9] == 'X') Winner = 'X';
+        if (posn[1] == 'X' && posn[5] == 'X' && posn[9] == 'X') Winner = 'X';
+        if (posn[3] == 'X' && posn[5] == 'X' && posn[7] == 'X') Winner = 'X';
         if (Winner == 'X' )
         {System.out.println("Jugador 1 ha ganado" );
             return Winner;
@@ -137,7 +137,7 @@ public class TresEnRaya {
     {
         
         
-        if (posn[spot] == 'X' && posn[spot] == 'O')
+        if (posn[spot] == 'X' || posn[spot] == 'O') //CAMBIAR && POR ||
         {
             System.out.println("Esa posicion ya se ha elegido, por favor elija otra");
             return true;
@@ -151,10 +151,10 @@ public class TresEnRaya {
     
     
     public  void nextPlayer()
-    {
+    { //CAMBIAR X Y O
         if (player == 'X')
-        player = 'X';
-        else player = 'O';
+        player = 'O';
+        else player = 'X';
         
     }
     
